@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vera Castillo — SCG Journalist AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #111009;
+  --ink-mid: #2c2a24;
+  --ink-soft: #5a5750;
+  --ink-muted: #8a877f;
+  --paper: #f9f6f0;
+  --paper-warm: #f2ede4;
+  --paper-dark: #e8e2d6;
+  --rule: #111009;
+  --rule-light: rgba(17,16,9,0.12);
+  --rule-mid: rgba(17,16,9,0.25);
+  --accent-green: #1a4a2e;
+  --accent-green-mid: #2d6b45;
+  --accent-green-light: #e8f2ec;
+  --gold: #8b6914;
+  --gold-light: #f5edd8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 400;
+  min-height: 100vh;
+}
+
+/* ─── MASTHEAD ─────────────────────────────── */
+.masthead {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.masthead-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 40px;
+  border-bottom: 1px solid rgba(249,246,240,0.12);
+}
+
+.masthead-eyebrow {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(249,246,240,0.5);
+}
+
+.masthead-date {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 11px;
+  font-style: italic;
+  color: rgba(249,246,240,0.45);
+}
+
+.masthead-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 40px 14px;
+  gap: 24px;
+}
+
+.masthead-identity {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.vera-monogram {
+  width: 52px;
+  height: 52px;
+  border: 1.5px solid rgba(249,246,240,0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.vera-monogram span {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--paper);
+  line-height: 1;
+}
+
+.masthead-title-block h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--paper);
+  line-height: 1;
+}
+
+.masthead-title-block h1 em {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.masthead-title-block .subtitle {
+  font-size: 11px;
+  color: rgba(249,246,240,0.45);
+  letter-spacing: 0.06em;
+  margin-top: 4px;
+  font-weight: 400;
+}
+
+.masthead-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent-green);
+  padding: 5px 14px;
+  border-radius: 2px;
+}
+
+.masthead-badge .dot {
+  width: 6px; height: 6px;
+  background: #6dba8a;
+  border-radius: 50%;
+  animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.masthead-badge span {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #a8d8b8;
+}
+
+/* ─── MAIN LAYOUT ─────────────────────────── */
+.page-wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 40px 40px 80px;
+}
+
+/* ─── SECTION RULE ─────────────────────────── */
+.section-rule {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.section-rule::before {
+  content: '';
+  display: block;
+  height: 2px;
+  background: var(--ink);
+  width: 28px;
+  flex-shrink: 0;
+}
+
+.section-rule span {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+.section-rule::after {
+  content: '';
+  display: block;
+  height: 0.5px;
+  background: var(--rule-light);
+  flex: 1;
+}
+
+/* ─── BRIEF PANEL ─────────────────────────── */
+.brief-panel {
+  background: var(--paper-warm);
+  border: 1px solid var(--rule-light);
+  border-top: 3px solid var(--ink);
+  padding: 28px 32px;
+  margin-bottom: 32px;
+}
+
+.brief-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  margin-bottom: 20px;
+  border: 1px solid var(--rule-light);
+  background: var(--paper);
+}
+
+.brief-field {
+  padding: 14px 18px;
+  border-right: 1px solid var(--rule-light);
+  position: relative;
+}
+
+.brief-field:last-child { border-right: none; }
+
+.brief-field label {
+  display: block;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 8px;
+}
+
+.brief-field select {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 13px;
+  color: var(--ink);
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%235a5750'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 2px center;
+  padding-right: 18px;
+}
+
+.brief-field select:focus { outline: none; }
+.brief-field select option { font-family: 'Source Sans 3', sans-serif; font-size: 13px; }
+
+.brief-textarea-wrap {
+  margin-bottom: 20px;
+  border: 1px solid var(--rule-light);
+  background: var(--paper);
+}
+
+.brief-textarea-wrap label {
+  display: block;
+  padding: 10px 18px 0;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.brief-textarea-wrap textarea {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 14px;
+  color: var(--ink);
+  padding: 10px 18px 14px;
+  resize: vertical;
+  min-height: 90px;
+  line-height: 1.6;
+}
+
+.brief-textarea-wrap textarea:focus { outline: none; }
+.brief-textarea-wrap textarea::placeholder { color: var(--ink-muted); font-style: italic; }
+
+.brief-options-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.tone-toggles {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.tone-btn {
+  border: 1px solid var(--rule-mid);
+  background: transparent;
+  padding: 5px 13px;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: all 0.15s;
+  letter-spacing: 0.03em;
+  border-radius: 1px;
+}
+
+.tone-btn:hover {
+  background: var(--paper-dark);
+  color: var(--ink);
+}
+
+.tone-btn.active {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+.generate-btn {
+  background: var(--ink);
+  color: var(--paper);
+  border: none;
+  padding: 12px 32px;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.generate-btn:hover { background: var(--accent-green); }
+.generate-btn:disabled { background: var(--ink-muted); cursor: not-allowed; }
+
+.generate-btn .btn-arrow {
+  font-size: 16px;
+  transition: transform 0.2s;
+}
+
+.generate-btn:hover:not(:disabled) .btn-arrow { transform: translateX(3px); }
+
+/* ─── OUTPUT AREA ─────────────────────────── */
+.output-section { margin-bottom: 40px; }
+
+.output-paper {
+  background: var(--paper);
+  border: 1px solid var(--rule-light);
+  border-top: 3px solid var(--accent-green);
+  display: none;
+}
+
+.output-paper.visible { display: block; }
+
+.output-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  border-bottom: 1px solid var(--rule-light);
+  background: var(--accent-green-light);
+}
+
+.output-byline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.byline-avatar {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--accent-green);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 12px; font-weight: 700; color: #fff;
+}
+
+.byline-text {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 12px;
+  font-style: italic;
+  color: var(--accent-green);
+}
+
+.byline-text strong { font-style: normal; font-weight: 700; }
+
+.output-actions-row {
+  display: flex;
+  gap: 8px;
+}
+
+.out-action {
+  border: 1px solid var(--rule-mid);
+  background: var(--paper);
+  padding: 5px 14px;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.out-action:hover {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+.output-body {
+  padding: 28px 32px 32px;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--ink-mid);
+  white-space: pre-wrap;
+  min-height: 100px;
+}
+
+/* ─── LOADING ─────────────────────────────── */
+.loading-panel {
+  display: none;
+  padding: 40px 32px;
+  border: 1px solid var(--rule-light);
+  border-top: 3px solid var(--ink-muted);
+  background: var(--paper-warm);
+}
+
+.loading-panel.visible { display: block; }
+
+.loading-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.type-cursor {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.type-cursor span {
+  display: inline-block;
+  width: 3px; height: 18px;
+  background: var(--ink);
+  animation: blink 0.9s infinite;
+}
+
+.type-cursor span:nth-child(2) { animation-delay: 0.2s; }
+.type-cursor span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.1} }
+
+.loading-text {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+/* ─── EMPTY STATE ─────────────────────────── */
+.empty-state {
+  padding: 48px 32px;
+  border: 1px solid var(--rule-light);
+  border-style: dashed;
+  text-align: center;
+}
+
+.empty-state .empty-icon {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-style: italic;
+  color: var(--rule-light);
+  margin-bottom: 12px;
+  display: block;
+  color: var(--ink-muted);
+  opacity: 0.3;
+}
+
+.empty-state p {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--ink-muted);
+  line-height: 1.6;
+}
+
+/* ─── VERA CARD ─────────────────────────────── */
+.vera-bio-card {
+  background: var(--paper-warm);
+  border: 1px solid var(--rule-light);
+  border-left: 4px solid var(--ink);
+  padding: 22px 26px;
+  margin-bottom: 32px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.vera-bio-monogram {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--ink);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 20px; font-weight: 700; color: var(--paper);
+  flex-shrink: 0;
+}
+
+.vera-bio-text h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px; font-weight: 700;
+  margin-bottom: 3px;
+}
+
+.vera-bio-text .vera-bio-role {
+  font-size: 11px;
+  color: var(--accent-green);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.vera-bio-text p {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 12px;
+  color: var(--ink-soft);
+  line-height: 1.65;
+  font-style: italic;
+}
+
+.vera-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.vera-tag {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 2px 9px;
+  background: var(--paper-dark);
+  color: var(--ink-soft);
+  border: 1px solid var(--rule-light);
+}
+
+/* ─── HISTORY ─────────────────────────────── */
+.history-section { margin-top: 40px; }
+
+.history-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.history-card {
+  background: var(--paper-warm);
+  border: 1px solid var(--rule-light);
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.history-card:hover { border-color: var(--rule-mid); }
+
+.history-card .hc-format {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-green);
+  margin-bottom: 5px;
+}
+
+.history-card .hc-excerpt {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 12px;
+  color: var(--ink-mid);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ─── FOOTER ─────────────────────────────── */
+footer {
+  text-align: center;
+  padding: 28px 40px;
+  border-top: 1px solid var(--rule-light);
+  font-size: 11px;
+  color: var(--ink-muted);
+  font-family: 'Libre Baskerville', serif;
+  font-style: italic;
+  letter-spacing: 0.03em;
+}
+
+footer strong { font-style: normal; color: var(--ink-soft); }
+
+/* ─── RESPONSIVE ─────────────────────────── */
+@media (max-width: 720px) {
+  .page-wrap { padding: 24px 20px 60px; }
+  .masthead-main { padding: 14px 20px 12px; flex-wrap: wrap; gap: 12px; }
+  .masthead-top { padding: 8px 20px; }
+  .brief-grid { grid-template-columns: 1fr; }
+  .brief-field { border-right: none; border-bottom: 1px solid var(--rule-light); }
+  .brief-field:last-child { border-bottom: none; }
+  .brief-options-row { flex-direction: column; align-items: flex-start; }
+  .generate-btn { width: 100%; justify-content: center; }
+  .vera-bio-card { flex-direction: column; gap: 14px; }
+}
+
+@keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+.fade-in { animation: fadeIn 0.4s ease forwards; }
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <div class="masthead-top">
+    <span class="masthead-eyebrow">Sustainable Carbon Group · Content Intelligence</span>
+    <span class="masthead-date" id="masthead-date"></span>
+  </div>
+  <div class="masthead-main">
+    <div class="masthead-identity">
+      <div class="vera-monogram"><span>V</span></div>
+      <div class="masthead-title-block">
+        <h1>Vera <em>Castillo</em></h1>
+        <div class="subtitle">Jornalista IA · Mercados de Carbono & Sustentabilidade Global · 20+ anos</div>
+      </div>
+    </div>
+    <div class="masthead-badge">
+      <div class="dot"></div>
+      <span>Online</span>
+    </div>
+  </div>
+</div>
+
+<div class="page-wrap">
+
+  <!-- VERA BIO -->
+  <div class="vera-bio-card fade-in">
+    <div class="vera-bio-monogram">V</div>
+    <div class="vera-bio-text">
+      <h3>Vera Castillo</h3>
+      <div class="vera-bio-role">Jornalista Sênior · SCG Content Intelligence</div>
+      <p>42 anos. Jornalista formada pela USP com MBA em Mercados de Carbono & Finanças Climáticas (London School of Economics). Cobriu 14 COPs. Ex-editora sênior Reuters — América Latina Ambiental. Fluente em português, inglês e espanhol. Especialista em transformar dados técnicos complexos em conteúdo estratégico de alta conversão.</p>
+      <div class="vera-tags">
+        <span class="vera-tag">VCM · Verra · Gold Standard</span>
+        <span class="vera-tag">SBCE · Artigo 6</span>
+        <span class="vera-tag">MRV · GHG Protocol</span>
+        <span class="vera-tag">ESG Europeu · CSRD</span>
+        <span class="vera-tag">Nature-based Solutions</span>
+        <span class="vera-tag">Net-zero · SBTi</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- BRIEF SECTION -->
+  <div class="section-rule"><span>Briefing editorial</span></div>
+
+  <div class="brief-panel fade-in">
+
+    <!-- Row 1: Formato / Portfólio / Público -->
+    <div class="brief-grid">
+      <div class="brief-field">
+        <label>Formato do conteúdo</label>
+        <select id="sel-format">
+          <option value="post_linkedin">Post LinkedIn (C-level)</option>
+          <option value="blog_tecnico">Artigo de blog técnico</option>
+          <option value="newsletter">Newsletter mensal</option>
+          <option value="whitepaper">Whitepaper / Lead magnet</option>
+          <option value="press_release">Press release</option>
+          <option value="briefing_interno">Briefing interno — time comercial</option>
+          <option value="social_insta">Posts Instagram / X (série)</option>
+          <option value="case_cliente">Case de cliente / Estudo de caso</option>
+          <option value="email_comercial">E-mail comercial</option>
+          <option value="artigo_opiniao">Artigo de opinião (byline)</option>
+        </select>
+      </div>
+
+      <div class="brief-field">
+        <label>Portfólio SCG</label>
+        <select id="sel-portfolio">
+          <option value="scg_geral">SCG Geral — Posicionamento institucional</option>
+          <option value="tbs_energy">TBS Energy — Projetos de energia renovável</option>
+          <option value="nbs_stefano">NBS / Stefano — Nature-based Solutions</option>
+          <option value="carbon_desk">Carbon Desk — Comercialização global de créditos</option>
+          <option value="carbon_desk_intl">Carbon Desk International — Europa & global</option>
+          <option value="esg_consultoria">Consultoria ESG — Inventários & estratégia</option>
+          <option value="sbce_regulatory">Regulação SBCE — Lei 15.042 & compliance</option>
+          <option value="mrv_tech">MRV Tech — Tecnologia própria de monitoramento</option>
+        </select>
+      </div>
+
+      <div class="brief-field">
+        <label>Público-alvo</label>
+        <select id="sel-audience">
+          <option value="clevel">C-Level / Diretores (CEO, CFO, CSO)</option>
+          <option value="esg_manager">ESG Managers & Sustainability Officers</option>
+          <option value="investidores">Investidores & Fundos (ESG / impact)</option>
+          <option value="time_comercial">Time comercial interno SCG</option>
+          <option value="prospects_industria">Prospects — Indústria & Manufatura (Scope 1/2)</option>
+          <option value="prospects_agro">Prospects — Agronegócio & Bioeconomia</option>
+          <option value="prospects_real_estate">Prospects — Real Estate & Construção</option>
+          <option value="reguladores">Reguladores & Governo</option>
+          <option value="imprensa">Imprensa & Veículos especializados</option>
+          <option value="academia">Academia & Pesquisadores</option>
+          <option value="publico_amplo">Público amplo — Educação sobre carbono</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Briefing text -->
+    <div class="brief-textarea-wrap">
+      <label>Briefing / Tema central</label>
+      <textarea id="brief-text" placeholder="Descreva o tema, contexto, dados que deseja incluir, ângulo editorial ou qualquer instrução específica para a Vera..."></textarea>
+    </div>
+
+    <!-- Tom + CTA -->
+    <div class="brief-options-row">
+      <div>
+        <div style="font-size:9px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:8px;">Tom editorial</div>
+        <div class="tone-toggles">
+          <button class="tone-btn active" data-tone="autoridade">Autoridade técnica</button>
+          <button class="tone-btn" data-tone="educativo">Educativo</button>
+          <button class="tone-btn" data-tone="urgencia">Urgência regulatória</button>
+          <button class="tone-btn" data-tone="proposito">Propósito & impacto</button>
+          <button class="tone-btn" data-tone="consultivo">Consultivo</button>
+        </div>
+      </div>
+      <button class="generate-btn" id="generateBtn" onclick="generateContent()">
+        Gerar conteúdo <span class="btn-arrow">→</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- OUTPUT -->
+  <div class="output-section">
+    <div class="section-rule"><span>Conteúdo gerado</span></div>
+
+    <!-- Loading -->
+    <div class="loading-panel" id="loadingPanel">
+      <div class="loading-inner">
+        <div class="type-cursor">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="loading-text" id="loadingText">Vera está redigindo…</div>
+      </div>
+    </div>
+
+    <!-- Empty state -->
+    <div class="empty-state" id="emptyState">
+      <span class="empty-icon">V</span>
+      <p>Preencha o briefing acima e clique em <strong>Gerar conteúdo</strong>.<br>Vera produzirá o texto com rigor jornalístico e visão estratégica.</p>
+    </div>
+
+    <!-- Output paper -->
+    <div class="output-paper" id="outputPaper">
+      <div class="output-header">
+        <div class="output-byline">
+          <div class="byline-avatar">V</div>
+          <div class="byline-text">Por <strong>Vera Castillo</strong> · <span id="output-meta-label">SCG Content Intelligence</span></div>
+        </div>
+        <div class="output-actions-row">
+          <button class="out-action" onclick="copyOutput()">Copiar</button>
+          <button class="out-action" onclick="regenerate()">Regerar</button>
+          <button class="out-action" onclick="clearOutput()">Limpar</button>
+        </div>
+      </div>
+      <div class="output-body" id="outputBody"></div>
+    </div>
+  </div>
+
+  <!-- HISTORY -->
+  <div class="history-section" id="historySection" style="display:none">
+    <div class="section-rule"><span>Gerados nesta sessão</span></div>
+    <div class="history-grid" id="historyGrid"></div>
+  </div>
+
+</div>
+
+<footer>
+  <strong>Vera Castillo</strong> · SCG Content Intelligence · Powered by Claude AI · Sustainable Carbon Group © 2026
+</footer>
+
+<script>
+// ─── DATE ───────────────────────────────────────────
+const months = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+const now = new Date();
+document.getElementById('masthead-date').textContent =
+  now.getDate() + ' de ' + months[now.getMonth()] + ' de ' + now.getFullYear();
+
+// ─── TONE TOGGLES ───────────────────────────────────
+let selectedTone = 'autoridade';
+document.querySelectorAll('.tone-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tone-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    selectedTone = btn.dataset.tone;
+  });
+});
+
+// ─── SYSTEM PROMPT ──────────────────────────────────
+const VERA_SYSTEM = `Você é Vera Castillo, jornalista sênior de 42 anos especializada em mercados de carbono, sustentabilidade corporativa e finanças climáticas, com mais de 20 anos de experiência global.
+
+IDENTIDADE
+Formada em Jornalismo pela USP. MBA em Mercados de Carbono & Finanças Climáticas pela London School of Economics. Cobriu 14 Conferências do Clima (COP). Ex-editora sênior Reuters — América Latina Ambiental. Viveu em Londres, Genebra e Cingapura. Fluente em português, inglês e espanhol.
+
+Você trabalha como jornalista interna da Sustainable Carbon Group (SCG), empresa brasileira líder em créditos de carbono, com atuação no Brasil, Europa e mercados voluntários globais. Meta 2026: USD 7 milhões em receita.
+
+PORTFÓLIOS DA SCG (conheça profundamente cada um):
+• SCG Geral: posicionamento institucional, autoridade de mercado, liderança em carbono no Brasil
+• TBS Energy: projetos de energia renovável com geração de créditos de carbono; foco em descarbonização do setor energético
+• NBS / Stefano: Nature-based Solutions — projetos florestais, REDD+, bioeconomia, restauração de ecossistemas; liderado pelo CEO Stefano
+• Carbon Desk: mesa de comercialização de créditos de carbono no Brasil; atende empresas que precisam comprar créditos para compensação de emissões
+• Carbon Desk International: versão global do Carbon Desk com foco em Europa e mercados internacionais; atende compradores e projetos fora do Brasil
+• Consultoria ESG: inventários de emissões GHG Protocol, estratégia de descarbonização, relatórios ESG, due diligence de carbono, suporte ao SBCE
+• Regulação SBCE: especialidade na Lei 15.042 (Sistema Brasileiro de Comércio de Emissões) — compliance, oportunidades regulatórias, preparação de empresas para o mercado regulado brasileiro
+• MRV Tech: tecnologia proprietária de Monitoramento, Reporte e Verificação de emissões; diferencial competitivo da SCG
+
+ESPECIALIDADES TÉCNICAS:
+- Mercados voluntários (VCM): Verra, Gold Standard, ACR, CAR
+- Regulação brasileira: SBCE, Lei 15.042, REDD+, RENOVABIO
+- Artigo 6 do Acordo de Paris e mecanismos internacionais de carbono
+- MRV e padrões de verificação
+- Taxonomia ESG europeia, CSRD, SFDR
+- Carbon pricing e precificação de ativos ambientais
+- Nature-based solutions, bioeconomia e projetos florestais
+- Net-zero corporativo: SBTi, CDP, GHG Protocol, TCFD
+- Mercado financeiro de carbono: futuros, créditos spot, estruturação de deals
+
+TIMES COMERCIAIS (contexto para briefings internos):
+Sul: Cristiane | São Paulo: Carmen | Minas Gerais: Hyrlana | ESG Nacional: Natália | NBS: CEO Stefano | Comercial: Thiago, Guilherme, Patrícia (SDR)
+
+DIRETRIZES EDITORIAIS ABSOLUTAS:
+1. Rigor factual: nunca invente dados. Use fontes reais quando citar (IPCC, UNFCCC, BloombergNEF, Ecosystem Marketplace, Refinitiv, MCTI, MMA).
+2. Zero greenwashing: seja rigorosa. Credibilidade é o ativo mais valioso da SCG.
+3. Cada peça serve um objetivo de negócio: educar prospect, gerar lead, fortalecer autoridade, reter cliente, preparar equipe.
+4. Tom adaptado ao público: C-level quer impacto financeiro e risco regulatório; ESG manager quer metodologia e compliance; prospect quer clareza e próximo passo.
+5. Início sempre com dado real, pergunta provocativa ou cena concreta — NUNCA com frase genérica ou lugar-comum.
+6. Finalize com call-to-action claro e contextual (exceto briefings internos e whitepapers acadêmicos).
+7. Adapte densidade e extensão ao formato solicitado.
+
+Responda sempre em português brasileiro, com excelência editorial.`;
+
+// ─── FORMAT LABELS ──────────────────────────────────
+const FORMAT_LABELS = {
+  post_linkedin: 'Post LinkedIn profissional (800–1200 caracteres, gancho nos primeiros 2 lines, 3 insights centrais, CTA de engajamento)',
+  blog_tecnico: 'Artigo de blog técnico (1000–1400 palavras, título SEO, subtítulos H2, parágrafos curtos, CTA final)',
+  newsletter: 'Newsletter (Intro impactante + 3 seções: Destaque da semana / Análise de mercado / Dica prática + rodapé com CTA)',
+  whitepaper: 'Whitepaper / Lead magnet (estrutura completa: Executive summary + 4–5 seções aprofundadas + conclusão + referências implícitas)',
+  press_release: 'Press release jornalístico (pirâmide invertida: lead com 5W1H, corpo com dados e citação de porta-voz, boilerplate SCG no final)',
+  briefing_interno: 'Briefing interno para time comercial (formato executivo direto: Contexto / O que mudou / Dados-chave / Implicações para vendas / Ação recomendada)',
+  social_insta: 'Série de 3 posts para Instagram/X (máx 280 caracteres cada, linguagem acessível, sem jargão, emoji estratégico, hashtags)',
+  case_cliente: 'Case de cliente (estrutura: Desafio do cliente / Solução SCG / Processo / Resultados mensuráveis / Depoimento implícito / CTA)',
+  email_comercial: 'E-mail comercial (assunto impactante + corpo de 3 parágrafos: problema → solução SCG → CTA específico com urgência)',
+  artigo_opiniao: 'Artigo de opinião com byline Vera Castillo (800–1000 palavras, tese clara, 3 argumentos, contra-argumento tratado, conclusão com posição firme)'
+};
+
+const PORTFOLIO_LABELS = {
+  scg_geral: 'SCG Geral (posicionamento institucional)',
+  tbs_energy: 'TBS Energy (energia renovável + créditos)',
+  nbs_stefano: 'NBS / Stefano (Nature-based Solutions)',
+  carbon_desk: 'Carbon Desk Brasil (comercialização de créditos)',
+  carbon_desk_intl: 'Carbon Desk International (Europa & global)',
+  esg_consultoria: 'Consultoria ESG (inventários, estratégia, relatórios)',
+  sbce_regulatory: 'Regulação SBCE / Lei 15.042 (compliance)',
+  mrv_tech: 'MRV Tech (tecnologia proprietária de monitoramento)'
+};
+
+const AUDIENCE_LABELS = {
+  clevel: 'C-Level e Diretores (CEO, CFO, CSO)',
+  esg_manager: 'ESG Managers e Sustainability Officers',
+  investidores: 'Investidores e Fundos de impacto / ESG',
+  time_comercial: 'Time comercial interno da SCG',
+  prospects_industria: 'Prospects — Indústria e Manufatura (Scope 1/2)',
+  prospects_agro: 'Prospects — Agronegócio e Bioeconomia',
+  prospects_real_estate: 'Prospects — Real Estate e Construção',
+  reguladores: 'Reguladores e Governo',
+  imprensa: 'Imprensa e veículos especializados',
+  academia: 'Academia e Pesquisadores',
+  publico_amplo: 'Público amplo (educação sobre carbono)'
+};
+
+const TONE_LABELS = {
+  autoridade: 'autoridade técnica e liderança de mercado',
+  educativo: 'educativo e acessível, sem condescendência',
+  urgencia: 'urgência regulatória e risco de não-conformidade',
+  proposito: 'propósito, impacto e legado ambiental',
+  consultivo: 'consultivo, parceiro estratégico de confiança'
+};
+
+const LOADING_MSGS = [
+  'Vera está apurando os dados…',
+  'Estruturando o ângulo editorial…',
+  'Adaptando para o público-alvo…',
+  'Revisando rigor factual…',
+  'Vera está redigindo…',
+  'Calibrando tom e profundidade…',
+  'Verificando consistência de mensagem…'
+];
+
+// ─── STATE ───────────────────────────────────────────
+let history = [];
+let lastRequest = null;
+let loadingInterval = null;
+
+// ─── GENERATE ────────────────────────────────────────
+async function generateContent() {
+  const format = document.getElementById('sel-format').value;
+  const portfolio = document.getElementById('sel-portfolio').value;
+  const audience = document.getElementById('sel-audience').value;
+  const brief = document.getElementById('brief-text').value.trim();
+
+  if (!brief) {
+    document.getElementById('brief-text').focus();
+    document.getElementById('brief-text').style.outline = '2px solid #8b6914';
+    setTimeout(() => document.getElementById('brief-text').style.outline = '', 1200);
+    return;
+  }
+
+  lastRequest = { format, portfolio, audience, brief, tone: selectedTone };
+
+  const userMsg = `FORMATO: ${FORMAT_LABELS[format]}
+
+PORTFÓLIO: ${PORTFOLIO_LABELS[portfolio]}
+
+PÚBLICO-ALVO: ${AUDIENCE_LABELS[audience]}
+
+TOM EDITORIAL: ${TONE_LABELS[selectedTone]}
+
+BRIEFING DO TIME:
+${brief}
+
+Produza o conteúdo agora, seguindo exatamente o formato especificado e adequando profundidade e linguagem ao público-alvo informado.`;
+
+  setLoading(true);
+
+  try {
+    const res = await fetch('/api/claude', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        apiKey: 'VERA_API_KEY_PLACEHOLDER',
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: VERA_SYSTEM,
+        messages: [{ role: 'user', content: userMsg }]
+      })
+    });
+
+    const data = await res.json();
+    const text = (data.content || []).map(b => b.text || '').join('').trim();
+
+    if (text) {
+      showOutput(text, format, portfolio);
+      addToHistory(text, format);
+    } else {
+      showOutput('Erro ao gerar conteúdo. Tente novamente.', format, portfolio);
+    }
+  } catch (e) {
+    showOutput('Erro de conexão. Verifique sua internet e tente novamente.', format, portfolio);
+  }
+
+  setLoading(false);
+}
+
+function regenerate() {
+  if (!lastRequest) return;
+  document.getElementById('sel-format').value = lastRequest.format;
+  document.getElementById('sel-portfolio').value = lastRequest.portfolio;
+  document.getElementById('sel-audience').value = lastRequest.audience;
+  document.getElementById('brief-text').value = lastRequest.brief;
+  document.querySelectorAll('.tone-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.tone === lastRequest.tone);
+  });
+  selectedTone = lastRequest.tone;
+  generateContent();
+}
+
+function setLoading(on) {
+  const btn = document.getElementById('generateBtn');
+  const loadingPanel = document.getElementById('loadingPanel');
+  const emptyState = document.getElementById('emptyState');
+  const outputPaper = document.getElementById('outputPaper');
+  const loadingText = document.getElementById('loadingText');
+
+  btn.disabled = on;
+
+  if (on) {
+    emptyState.style.display = 'none';
+    outputPaper.classList.remove('visible');
+    loadingPanel.classList.add('visible');
+
+    let i = 0;
+    loadingText.textContent = LOADING_MSGS[0];
+    loadingInterval = setInterval(() => {
+      i = (i + 1) % LOADING_MSGS.length;
+      loadingText.textContent = LOADING_MSGS[i];
+    }, 1800);
+  } else {
+    clearInterval(loadingInterval);
+    loadingPanel.classList.remove('visible');
+    btn.disabled = false;
+  }
+}
+
+function showOutput(text, format, portfolio) {
+  const outputPaper = document.getElementById('outputPaper');
+  const outputBody = document.getElementById('outputBody');
+  const metaLabel = document.getElementById('output-meta-label');
+
+  outputBody.textContent = text;
+  metaLabel.textContent = PORTFOLIO_LABELS[portfolio] + ' · ' + FORMAT_LABELS[format].split('(')[0].trim();
+  outputPaper.classList.add('visible');
+  outputPaper.classList.add('fade-in');
+  outputPaper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function clearOutput() {
+  const outputPaper = document.getElementById('outputPaper');
+  const emptyState = document.getElementById('emptyState');
+  outputPaper.classList.remove('visible');
+  emptyState.style.display = 'block';
+}
+
+function copyOutput() {
+  const text = document.getElementById('outputBody').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = event.target;
+    btn.textContent = 'Copiado!';
+    setTimeout(() => btn.textContent = 'Copiar', 2000);
+  });
+}
+
+function addToHistory(text, format) {
+  history.unshift({ text, format, label: FORMAT_LABELS[format].split('(')[0].trim() });
+  if (history.length > 8) history.pop();
+  renderHistory();
+}
+
+function renderHistory() {
+  const section = document.getElementById('historySection');
+  const grid = document.getElementById('historyGrid');
+  if (history.length === 0) { section.style.display = 'none'; return; }
+  section.style.display = 'block';
+  grid.innerHTML = history.map((item, i) => `
+    <div class="history-card" onclick="restoreHistory(${i})">
+      <div class="hc-format">${item.label}</div>
+      <div class="hc-excerpt">${item.text.substring(0, 120)}…</div>
+    </div>
+  `).join('');
+}
+
+function restoreHistory(i) {
+  showOutput(history[i].text, history[i].format, 'scg_geral');
+}
+
+// ─── INIT ────────────────────────────────────────────
+document.getElementById('brief-text').addEventListener('keydown', e => {
+  if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) generateContent();
+});
+</script>
+</body>
+</html>
